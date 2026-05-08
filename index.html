@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Wasm Sine Test</title>
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+    <style>
+        body { font-family: sans-serif; margin: 30px; }
+        .input-group { margin-bottom: 15px; }
+        label { display: inline-block; width: 150px; font-weight: bold; }
+        input { padding: 5px; width: 100px; }
+        button { padding: 10px 20px; font-size: 16px; cursor: pointer; background: #007bff; color: white; border: none; border-radius: 5px; }
+        button:disabled { background: #ccc; cursor: not-allowed; }
+    </style>
+</head>
+<body>
+    <h2>WebAssembly Math Pipe Test</h2>
+    
+    <div class="input-group">
+        <label>Amplitude (A):</label>
+        <input type="number" id="A" value="10">
+    </div>
+    <div class="input-group">
+        <label>Frequency (f) Hz:</label>
+        <input type="number" id="f" value="60">
+    </div>
+    <div class="input-group">
+        <label>Time Step (delt):</label>
+        <input type="number" id="delt" value="0.0001" step="0.0001">
+    </div>
+    <div class="input-group">
+        <label>End Time (tend):</label>
+        <input type="number" id="tend" value="0.1" step="0.01">
+    </div>
+    
+    <button id="runBtn" disabled>Loading Wasm...</button>
+
+    <div id="plot" style="width: 800px; height: 500px; margin-top: 20px;"></div>
+
+    <script src="main.js"></script>
+</body>
+</html>
