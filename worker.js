@@ -1,13 +1,11 @@
-// 1. Define Module using 'var' BEFORE importing the Wasm glue code
-var Module = {
-    onRuntimeInitialized: function() {
-        // Tell the main thread that the WebAssembly engine is fully loaded and ready
-        postMessage({ type: 'READY' });
-    }
-};
-
-// 2. Now import Emscripten's generated code. It will attach itself to the 'var Module' above.
+// 1. Load the Emscripten glue code FIRST. 
+// This lets Emscripten declare the 'Module' variable natively without any conflicts.
 importScripts('engine.js');
+
+// 2. Now that 'Module' safely exists, we attach our ready listener to it.
+Module.onRuntimeInitialized = function() {
+    postMessage({ type: 'READY' });
+};
 
 // 3. Listen for the simulation parameters from the main thread
 onmessage = function(e) {
