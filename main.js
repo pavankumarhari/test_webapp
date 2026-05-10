@@ -55,6 +55,9 @@ worker.onmessage = function(e) {
         Plotly.newPlot('plot', [trace], layout);
         setIdleButtonState();
     } else if (e.data.type === 'ERROR') {
+        if (e.data.buildId) {
+            console.info(`Worker build on error: ${e.data.buildId}`);
+        }
         console.error('Worker error:', e.data.message);
         alert(`Simulation failed: ${e.data.message}`);
         setIdleButtonState();
