@@ -13,7 +13,7 @@ float* run_sine_simulation(float A, float f, float delt, float tend) {
 
     for (int i = 0; i < steps; i++) {
         float t = i * delt;
-        float y = A * sin(2.0 * M_PI * f * t) + 0.25 * A * cos(2.0 * M_PI * 3 * f * t);
+        float y = A * sin(2.0 * M_PI * f * t) + 0.25 * A * sin(2.0 * M_PI * 5 * f * t);
         
         // Flattened 2D array indexing: [row * num_cols + col]
         data[i * 2 + 0] = t; // Column 0: Time
