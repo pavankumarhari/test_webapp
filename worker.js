@@ -23,7 +23,7 @@ onmessage = function(e) {
     const totalElements = steps * 2; // 2 columns (time and y-value)
 
     // Read the array from Wasm memory (ptr / 4 aligns the bytes to 32-bit floats)
-    const dataArray = Module.HEAPF32.subarray(ptr / 4, (ptr / 4) + totalElements);
+    const dataArray = HEAPF32.subarray(ptr / 4, (ptr / 4) + totalElements);
 
     // Copy the array to standard JS memory so we can safely free the Wasm memory
     const result = new Float32Array(dataArray);
